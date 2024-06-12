@@ -1,0 +1,52 @@
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgb(199, 103, 27);
+    background-color: #fff;
+    max-width: 800px;
+    width: 100%;
+}
+
+.card img {
+    max-width: 300px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carNameInfo {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.InfoCarText {
+    margin: 5px 0;
+}
+
+@media (max-width: 1000px) {
+    .bodyContainer {
+        justify-content: flex-start;
+    }
+}

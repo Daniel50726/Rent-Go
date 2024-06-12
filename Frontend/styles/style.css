@@ -1,0 +1,47 @@
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.logoNameSection {
+    display: flex;
+    justify-content: center;
+}
+
+.nameContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.companyName {
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 42px;
+    margin: 25px 0;
+}
+
+.navigateContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.navigateSection {
+    display: flex;
+    align-items: center;
+}
+
+.navigateLink {
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.navigateLink:hover {
+    text-decoration: underline;
+    color: #e57921;
+}

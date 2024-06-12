@@ -1,0 +1,16 @@
+.userReservationContainer {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservationTittle {
+    display: flex;
+    font-weight: bold;
+    font-size: 25px;
+    justify-content: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
