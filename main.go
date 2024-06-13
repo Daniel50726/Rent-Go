@@ -1,14 +1,14 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"log"
-	"net/http"
-
 	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 	"golang.org/x/crypto/bcrypt"
+	"log"
+	"net/http"
 )
 
 var db *sqlx.DB
@@ -29,7 +29,6 @@ func main() {
 	}
 	defer db.Close()
 
-	// Crear la tabla de usuarios
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS users (
         username TEXT PRIMARY KEY,
         password_hash TEXT
@@ -47,41 +46,47 @@ func main() {
 }
 
 func registerHandler(w http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("username")
-	password := r.FormValue("password")
+	var user User
+	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
+		http.Error(w, "Invalid request payload", http.StatusBadRequest)
+		return
+	}
 
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
 		http.Error(w, "Could not hash the password", http.StatusInternalServerError)
 		return
 	}
 
 	query := "INSERT INTO users (username, password_hash) VALUES ($1, $2)"
-	_, err = db.Exec(query, username, string(hashedPassword))
+	_, err = db.Exec(query, user.Username, string(hashedPassword))
 	if err != nil {
 		http.Error(w, "Could not register the user", http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Fprintf(w, "User %s registered successfully", username)
+	fmt.Fprintf(w, "User %s registered successfully", user.Username)
 }
 
 func loginHandler(w http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("username")
-	password := r.FormValue("password")
+	var credentials User
+	if err := json.NewDecoder(r.Body).Decode(&credentials); err != nil {
+		http.Error(w, "Invalid request payload", http.StatusBadRequest)
+		return
+	}
 
 	var user User
-	err := db.Get(&user, "SELECT * FROM users WHERE username = $1", username)
+	err := db.Get(&user, "SELECT * FROM users WHERE username = $1", credentials.Username)
 	if err != nil {
 		http.Error(w, "Invalid username or password", http.StatusUnauthorized)
 		return
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(credentials.Password))
 	if err != nil {
 		http.Error(w, "Invalid username or password", http.StatusUnauthorized)
 		return
 	}
 
-	fmt.Fprintf(w, "User %s logged in successfully", username)
+	fmt.Fprintf(w, "User %s logged in successfully", user.Username)
 }

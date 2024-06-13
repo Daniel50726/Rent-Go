@@ -1,20 +1,22 @@
-###
+### PRUEBA DE REGISTRO
 
-# curl -X POST -d "username=testuser&password=testpassword" http://localhost:8080/register
 POST http://localhost:8080/register
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-username = testuser &
-password = testpassword
+{
+  "username": "felipe",
+  "password": "123"
+}
 
-###
+### PRUEBA DE LOGIN
 
-# curl -X POST -d "username=testuser&password=testpassword" http://localhost:8080/login
 POST http://localhost:8080/login
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-username = testuser &
-password = 123
+{
+  "username": "felipe",
+  "password": "123"
+}
 
 ###
 
