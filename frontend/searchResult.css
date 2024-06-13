@@ -1,0 +1,49 @@
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.tarjetContainer {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.tarjetContainer img {
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.tarjetContainer h2 {
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #333;
+}
+
+.tarjetPrice {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.rentButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.rentButton:hover {
+    background-color: #0056b3;
+}

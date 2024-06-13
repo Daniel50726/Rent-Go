@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -62,7 +61,9 @@ var cars = []Car{
 		LuxurySeat:   true,
 		Fuel:         "Gas",
 		Reservation:  true,
-		Images:       Images{CarImage: base64.StdEncoding.EncodeToString([]byte("imageData1"))},
+		Images: Images{
+			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+		},
 	},
 	{
 		Name:         "Car 2",
@@ -79,13 +80,15 @@ var cars = []Car{
 		LuxurySeat:   false,
 		Fuel:         "Gasoline",
 		Reservation:  false,
-		Images:       Images{CarImage: base64.StdEncoding.EncodeToString([]byte("imageData2"))},
+		Images: Images{
+			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+		},
 	},
 	{
 		Name:         "Car 3",
 		Biography:    Biography{DescriptionCar: "Description for Car 3"},
 		Type:         "Hatchback",
-		Color:        "Green",
+		Color:        "Red",
 		Model:        "2021",
 		Brand:        "Brand C",
 		Price:        "$22000",
@@ -96,7 +99,9 @@ var cars = []Car{
 		LuxurySeat:   true,
 		Fuel:         "Electric",
 		Reservation:  true,
-		Images:       Images{CarImage: base64.StdEncoding.EncodeToString([]byte("imageData3"))},
+		Images: Images{
+			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+		},
 	},
 	{
 		Name:         "Car 4",
@@ -113,7 +118,9 @@ var cars = []Car{
 		LuxurySeat:   false,
 		Fuel:         "Hybrid",
 		Reservation:  false,
-		Images:       Images{CarImage: base64.StdEncoding.EncodeToString([]byte("imageData4"))},
+		Images: Images{
+			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+		},
 	},
 	{
 		Name:         "Car 5",
@@ -130,7 +137,9 @@ var cars = []Car{
 		LuxurySeat:   true,
 		Fuel:         "Hybrid",
 		Reservation:  true,
-		Images:       Images{CarImage: base64.StdEncoding.EncodeToString([]byte("imageData5"))},
+		Images: Images{
+			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+		},
 	},
 }
 
