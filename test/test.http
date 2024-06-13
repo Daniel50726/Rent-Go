@@ -18,5 +18,87 @@ Content-Type: application/json
   "password": "123"
 }
 
+### BUSQUEDA POR TIPO
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "type": "Coupe"
+}
+
+### BUSQUEDA POR COLOR
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "color": "Red"
+}
+
+### BUSQUEDA POR MODELO
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "model": "2020"
+}
+
+### BUSQUEDA POR MARCA
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "brand": "Brand A"
+}
+
+### BUSQUEDA POR TRANSMISIÓN
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "transmission": "Automatic"
+}
+
+### BUSQUEDA POR COMBUSTIBLE
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "fuel": "Hybrid"
+}
+
+### BUSQUEDA SIN PARAMETROS
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{}
+
+### BUSQUEDA POR VARIOS PARAMETROS
+
+POST http://localhost:8080/api/cars/search
+Content-Type: application/json
+
+{
+  "type": "SUV",
+  "color": "Red",
+  "model": "2020"
+}
+
 ###
+
+
+
+
+
+
+
+
+
+
 
