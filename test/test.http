@@ -96,7 +96,7 @@ POST http://localhost:8080/api/cars/toggleReservation
 Content-Type: application/json
 
 {
-  "carName": "Car 2"
+  "carName": "Car 4"
 }
 
 ###

@@ -1,0 +1,69 @@
+.reservation-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-container {
+    max-width: 800px;
+    border: 1px solid #b9b7b7;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 6px -5px 4px rgb(255 138 0 / 34%);
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.details-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.details-content img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.details-description {
+    flex: 1;
+}
+
+.details-item {
+    margin-bottom: 8px;
+}
+
+.details-item span {
+    font-weight: bold;
+}
+
+.details-item.true {
+    color: green;
+}
+
+.details-item.false {
+    color: red;
+}
+
+.deleteButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.deleteButton svg {
+    fill: red;
+    width: 24px;
+    height: 24px;
+}

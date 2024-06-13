@@ -22,38 +22,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 price.setAttribute("class", "tarjetPrice");
                 price.textContent = `Precio: ${car.price}`;
 
-                const deleteButton = document.createElement("button");
-                deleteButton.setAttribute("class", "deleteButton");
-                deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="red" d="M3 6l3 18h12l3-18H3zm18-2h-4l-1-1H8L7 4H3V2h18v2z"/></svg>';
-
-                deleteButton.addEventListener('click', () => {
-                    fetch('http://localhost:8080/api/cars/toggleReservation', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ carName: car.name }),
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Car Reservation Status Changed:', data);
-
-                            // Remove the car from the local storage
-                            let reservations = JSON.parse(localStorage.getItem('userReservations')) || [];
-                            reservations = reservations.filter(reservedCar => reservedCar.name !== car.name);
-                            localStorage.setItem('userReservations', JSON.stringify(reservations));
-
-                            // Remove the card from the frontend
-                            reservationContainer.removeChild(tarjetContainer);
-                        })
-                        .catch(error => console.error('Error:', error));
-                });
-
-                imageContainer.appendChild(image);
                 tarjetContainer.appendChild(tarjetName);
-                tarjetContainer.appendChild(imageContainer);
+                imageContainer.appendChild(image); // Agregar imagen al contenedor de imagen
+                tarjetContainer.appendChild(imageContainer); // Agregar contenedor de imagen al contenedor principal
                 tarjetContainer.appendChild(price);
-                tarjetContainer.appendChild(deleteButton);
+
+                tarjetContainer.addEventListener('click', () => {
+                    // Redirect to reservationInfo.html and pass car details via localStorage
+                    localStorage.setItem('selectedCar', JSON.stringify(car));
+                    window.location.href = 'reservationInfo.html';
+                });
 
                 reservationContainer.appendChild(tarjetContainer);
             });
