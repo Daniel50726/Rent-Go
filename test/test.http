@@ -90,7 +90,18 @@ Content-Type: application/json
   "model": "2020"
 }
 
+### CAMBIAR EL ESTADO DE LA RESERVA
+
+POST http://localhost:8080/api/cars/toggleReservation
+Content-Type: application/json
+
+{
+  "carName": "Car 2"
+}
+
 ###
+
+
 
 
 

@@ -5,13 +5,14 @@
 }
 
 .tarjetContainer {
-    border: 1px solid #ccc;
+    border: 1px solid #b9b7b7;
     border-radius: 8px;
     margin: 10px;
     padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 6px -5px 4px rgb(255 138 0 / 34%);
     text-align: center;
     box-sizing: border-box;
+    position: relative; /* Add relative positioning */
 }
 
 .tarjetContainer img {
@@ -23,14 +24,16 @@
 }
 
 .tarjetContainer h2 {
+    font-weight: bold;
+    text-transform: uppercase;
     margin-bottom: 8px;
-    font-size: 18px;
-    color: #333;
+    font-size: 20px;
+    color: #000;
 }
 
 .tarjetPrice {
-    font-size: 16px;
-    color: #666;
+    font-size: 18px;
+    color: #000000;
     margin-bottom: 16px;
 }
 
@@ -46,4 +49,13 @@
 
 .rentButton:hover {
     background-color: #0056b3;
+}
+
+.deleteButton {
+    position: absolute; /* Position the delete button */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background: none;
+    border: none;
+    cursor: pointer;
 }

@@ -24,3 +24,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         }
     }
 });
+
+// Add event listener to the register button
+document.querySelector('.registerUser').addEventListener('click', function() {
+    window.location.href = 'register.html';
+});

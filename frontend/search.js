@@ -32,22 +32,52 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 const tarjetName = document.createElement("h2");
                 tarjetName.setAttribute("class", "tarjetName");
-                tarjetName.textContent = car.name; // Access the name property directly
+                tarjetName.textContent = car.name;
 
                 const imageContainer = document.createElement("div");
                 imageContainer.setAttribute("class", "imageContainer");
 
                 const image = document.createElement("img");
-                image.setAttribute("src", car.images.CarImage); // Access the CarImage property directly
+                image.setAttribute("src", car.images.CarImage);
                 image.setAttribute("class", "tarjetImage");
 
                 const price = document.createElement("p");
                 price.setAttribute("class", "tarjetPrice");
-                price.textContent = `Price: ${car.price}`;
+                price.textContent = `PRECIO: ${car.price}`;
 
                 const rentButton = document.createElement("button");
                 rentButton.setAttribute("class", "rentButton");
-                rentButton.textContent = "Rentar ya";
+
+                if (car.reservation) {
+                    rentButton.textContent = "Bloqueado";
+                    rentButton.style.backgroundColor = "red";
+                    rentButton.disabled = true;
+                } else {
+                    rentButton.textContent = "Rentar ya";
+                    rentButton.addEventListener('click', () => {
+                        fetch('http://localhost:8080/api/cars/toggleReservation', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ carName: car.name }),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Car Reservation Status Changed:', data);
+                                rentButton.textContent = "Bloqueado";
+                                rentButton.style.backgroundColor = "red";
+                                rentButton.disabled = true;
+
+                                // Save the car in localStorage and redirect
+                                let reservations = JSON.parse(localStorage.getItem('userReservations')) || [];
+                                reservations.push(car);
+                                localStorage.setItem('userReservations', JSON.stringify(reservations));
+                                window.location.href = 'userReservations.html';
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                }
 
                 imageContainer.appendChild(image);
                 tarjetContainer.appendChild(tarjetName);
@@ -58,7 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 resultsContainer.appendChild(tarjetContainer);
             });
         } else {
-            console.log('No search results found.'); // Log if no results found
+            console.log('No search results found.');
         }
     }
 });

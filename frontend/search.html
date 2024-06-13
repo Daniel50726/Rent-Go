@@ -8,23 +8,23 @@
 </head>
 <body>
 <header>
-    <section>
+    <section class="headerSection">
         <h1 class="tittleMain">Rent & Go</h1>
         <a class="navigateHome" href="userReservations.html">TUS RESERVAS</a>
     </section>
 </header>
 <main>
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button onclick="searchCar()">Search</button>
-        <select id="searchCriteria">
-            <option value="">Select Criteria</option>
-            <option value="type">Type</option>
+        <label for="searchInput"></label><input class="input" type="text" id="searchInput" placeholder="Buscar...">
+        <button onclick="searchCar()">Buscar</button>
+        <label for="searchCriteria"></label><select id="searchCriteria">
+            <option value="">Buscar Todos</option>
+            <option value="type">Tipo</option>
             <option value="color">Color</option>
-            <option value="model">Model</option>
-            <option value="brand">Brand</option>
-            <option value="transmission">Transmission</option>
-            <option value="fuel">Fuel</option>
+            <option value="model">Modelo</option>
+            <option value="brand">Marca</option>
+            <option value="transmission">Transmisión</option>
+            <option value="fuel">Combustible</option>
         </select>
     </div>
 </main>

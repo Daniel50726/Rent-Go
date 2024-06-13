@@ -60,7 +60,7 @@ var cars = []Car{
 		Transmission: "Automatic",
 		LuxurySeat:   true,
 		Fuel:         "Gas",
-		Reservation:  true,
+		Reservation:  false,
 		Images: Images{
 			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
 		},
@@ -98,7 +98,7 @@ var cars = []Car{
 		Transmission: "Automatic",
 		LuxurySeat:   true,
 		Fuel:         "Electric",
-		Reservation:  true,
+		Reservation:  false,
 		Images: Images{
 			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
 		},
@@ -136,7 +136,7 @@ var cars = []Car{
 		Transmission: "Automatic",
 		LuxurySeat:   true,
 		Fuel:         "Hybrid",
-		Reservation:  true,
+		Reservation:  false,
 		Images: Images{
 			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
 		},
@@ -167,9 +167,8 @@ func main() {
 	api := r.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/register", registerHandler).Methods("POST")
 	api.HandleFunc("/login", loginHandler).Methods("POST")
-
-	// Ruta para la búsqueda de vehículos usando POST
 	api.HandleFunc("/cars/search", searchCarsPostHandler).Methods("POST")
+	api.HandleFunc("/cars/toggleReservation", toggleReservationHandler).Methods("POST")
 
 	// Servir archivos estáticos
 	staticDir := "./frontend/"
@@ -273,4 +272,26 @@ func searchCarsPostHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(results)
+}
+
+func toggleReservationHandler(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		CarName string `json:"carName"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		http.Error(w, "Invalid request payload", http.StatusBadRequest)
+		return
+	}
+
+	for i, car := range cars {
+		if car.Name == request.CarName {
+			cars[i].Reservation = !cars[i].Reservation
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(cars[i])
+			return
+		}
+	}
+
+	http.Error(w, "Car not found", http.StatusNotFound)
 }

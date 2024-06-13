@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
@@ -36,7 +36,7 @@ input {
     box-sizing: border-box;
 }
 
-button {
+.loginUser {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -46,8 +46,23 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.loginUser:hover {
     background-color: #0056b3;
+}
+
+.registerUser {
+    margin-top:10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #33ac11;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registerUser:hover {
+    background-color: #06b300;
 }
 
 #message {

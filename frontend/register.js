@@ -25,6 +25,11 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         if (response.status === 200) {
             messageDiv.textContent = `Usuario ${username} registrado correctamente.`;
             messageDiv.style.color = 'green';
+
+            // Redireccionar al usuario a la página de login después de un registro exitoso
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000); // Retraso de 2 segundos antes de redirigir (opcional)
         }
     } catch (error) {
         messageDiv.textContent = 'Error al registrar el usuario.';
