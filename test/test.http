@@ -1,20 +1,20 @@
 ### PRUEBA DE REGISTRO
 
-POST http://localhost:8080/register
+POST http://localhost:8080/api/register
 Content-Type: application/json
 
 {
-  "username": "felipe",
+  "username": "leo",
   "password": "123"
 }
 
 ### PRUEBA DE LOGIN
 
-POST http://localhost:8080/login
+POST http://localhost:8080/api/login
 Content-Type: application/json
 
 {
-  "username": "felipe",
+  "username": "leo",
   "password": "123"
 }
 

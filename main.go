@@ -19,9 +19,8 @@ type User struct {
 }
 
 func main() {
-	// Reemplaza "your_postgres_container_ip" con la IP del contenedor de PostgreSQL
+	// Conectar a PostgreSQL
 	dsn := "user=postgres password=mysecretpassword dbname=postgres sslmode=disable host=localhost port=5432"
-	//dsn := "user=postgres password=mysecretpassword dbname=postgres sslmode=disable host=some-postgres port=5432"
 	var err error
 	db, err = sqlx.Connect("postgres", dsn)
 	if err != nil {
@@ -38,8 +37,15 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/register", registerHandler).Methods("POST")
-	r.HandleFunc("/login", loginHandler).Methods("POST")
+
+	// Rutas para el registro y el login con prefijo /api
+	api := r.PathPrefix("/api").Subrouter()
+	api.HandleFunc("/register", registerHandler).Methods("POST")
+	api.HandleFunc("/login", loginHandler).Methods("POST")
+
+	// Servir archivos estáticos
+	staticDir := "./frontend/"
+	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir(staticDir))))
 
 	log.Println("Server listening on :8080")
 	http.ListenAndServe(":8080", r)
