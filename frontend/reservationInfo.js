@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const detailsList = document.createElement('ul');
 
             const detailsItems = [
-                { label: 'Descripción', value: selectedCar.biography.DescriptionCar },
+                { label: 'Descripción', value: selectedCar.biography },
                 { label: 'Marca', value: selectedCar.brand },
                 { label: 'Modelo', value: selectedCar.model },
                 { label: 'Color', value: selectedCar.color },
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             detailsItems.forEach(item => {
                 const li = document.createElement('li');
+                li.setAttribute('class', 'carInfo');
                 li.innerHTML = `<span>${item.label}:</span> ${item.value}`;
                 detailsList.appendChild(li);
             });

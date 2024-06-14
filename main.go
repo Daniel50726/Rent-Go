@@ -20,25 +20,21 @@ type User struct {
 }
 
 type Car struct {
-	Name         string    `json:"name"`
-	Biography    Biography `json:"biography"`
-	Type         string    `json:"type"`
-	Color        string    `json:"color"`
-	Model        string    `json:"model"`
-	Brand        string    `json:"brand"`
-	Price        string    `json:"price"`
-	Assistance   bool      `json:"assistance"`
-	Insurance    bool      `json:"insurance"`
-	BabySeat     bool      `json:"babySeat"`
-	Transmission string    `json:"transmission"`
-	LuxurySeat   bool      `json:"luxurySeat"`
-	Fuel         string    `json:"fuel"`
-	Reservation  bool      `json:"reservation"`
-	Images       Images    `json:"images"`
-}
-
-type Biography struct {
-	DescriptionCar string `json:"descriptionCar"`
+	Name         string `json:"name"`
+	Biography    string `json:"biography"`
+	Type         string `json:"type"`
+	Color        string `json:"color"`
+	Model        string `json:"model"`
+	Brand        string `json:"brand"`
+	Price        string `json:"price"`
+	Assistance   bool   `json:"assistance"`
+	Insurance    bool   `json:"insurance"`
+	BabySeat     bool   `json:"babySeat"`
+	Transmission string `json:"transmission"`
+	LuxurySeat   bool   `json:"luxurySeat"`
+	Fuel         string `json:"fuel"`
+	Reservation  bool   `json:"reservation"`
+	Images       Images `json:"images"`
 }
 
 type Images struct {
@@ -47,12 +43,12 @@ type Images struct {
 
 var cars = []Car{
 	{
-		Name:         "Car 1",
-		Biography:    Biography{DescriptionCar: "Description for Car 1"},
-		Type:         "SUV",
-		Color:        "Red",
+		Name:         "Audi Rs 6",
+		Biography:    "El Audi RS 6 es una poderosa combinación de lujo y rendimiento deportivo, diseñado para los amantes de la velocidad y el confort extremo.",
+		Type:         "Sedan",
+		Color:        "Blue",
 		Model:        "2020",
-		Brand:        "Brand A",
+		Brand:        "Audi",
 		Price:        "$20000",
 		Assistance:   true,
 		Insurance:    true,
@@ -62,16 +58,16 @@ var cars = []Car{
 		Fuel:         "Gas",
 		Reservation:  false,
 		Images: Images{
-			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+			CarImage: "https://images.pexels.com/photos/1035108/pexels-photo-1035108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		},
 	},
 	{
-		Name:         "Car 2",
-		Biography:    Biography{DescriptionCar: "Description for Car 2"},
-		Type:         "Sedan",
-		Color:        "Blue",
+		Name:         "Toyota Rav4",
+		Biography:    "La Toyota RAV4 es una camioneta SUV compacta que combina estilo, versatilidad y rendimiento. Destaca por su diseño moderno, amplio espacio interior y eficiencia en consumo de combustible. Ideal para familias y aventuras urbanas o fuera de la carretera, la RAV4 ofrece un equilibrio entre confort y capacidad todoterreno.",
+		Type:         "SUV",
+		Color:        "White",
 		Model:        "2019",
-		Brand:        "Brand B",
+		Brand:        "Toyota",
 		Price:        "$18000",
 		Assistance:   false,
 		Insurance:    true,
@@ -81,16 +77,16 @@ var cars = []Car{
 		Fuel:         "Gasoline",
 		Reservation:  false,
 		Images: Images{
-			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+			CarImage: "https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		},
 	},
 	{
-		Name:         "Car 3",
-		Biography:    Biography{DescriptionCar: "Description for Car 3"},
-		Type:         "Hatchback",
+		Name:         "Camaro",
+		Biography:    "El Chevrolet Camaro es un icónico muscle car estadounidense conocido por su potencia, estilo deportivo y emocionante rendimiento en carretera. Ideal para quienes buscan una experiencia de conducción dinámica y emocionante.",
+		Type:         "Muscle Car",
 		Color:        "Red",
 		Model:        "2021",
-		Brand:        "Brand C",
+		Brand:        "Chevrolet",
 		Price:        "$22000",
 		Assistance:   true,
 		Insurance:    false,
@@ -100,35 +96,35 @@ var cars = []Car{
 		Fuel:         "Electric",
 		Reservation:  false,
 		Images: Images{
-			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+			CarImage: "https://images.pexels.com/photos/3637981/pexels-photo-3637981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		},
 	},
 	{
-		Name:         "Car 4",
-		Biography:    Biography{DescriptionCar: "Description for Car 4"},
-		Type:         "Convertible",
-		Color:        "Black",
+		Name:         "Bmw Serie 4",
+		Biography:    "El BMW Serie 4 es una línea de automóviles deportivos de lujo que combina un diseño elegante con un rendimiento dinámico. Disponible en versiones coupé, convertible y Gran Coupé, destaca por su potente motor, confort interior de alta gama y tecnología avanzada, ofreciendo una experiencia de conducción emocionante y sofisticada.",
+		Type:         "Coupe",
+		Color:        "Blue",
 		Model:        "2018",
-		Brand:        "Brand D",
+		Brand:        "BMW",
 		Price:        "$30000",
 		Assistance:   false,
 		Insurance:    true,
 		BabySeat:     false,
 		Transmission: "Manual",
-		LuxurySeat:   false,
+		LuxurySeat:   true,
 		Fuel:         "Hybrid",
 		Reservation:  false,
 		Images: Images{
-			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+			CarImage: "https://images.pexels.com/photos/898336/pexels-photo-898336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		},
 	},
 	{
-		Name:         "Car 5",
-		Biography:    Biography{DescriptionCar: "Description for Car 5"},
-		Type:         "Coupe",
-		Color:        "White",
-		Model:        "2022",
-		Brand:        "Brand E",
+		Name:         "Chevrolet Tracker",
+		Biography:    "Rentabiliza tu viaje con la Chevrolet Tracker, ideal para aventuras urbanas y escapadas.",
+		Type:         "SUV",
+		Color:        "Red",
+		Model:        "2017",
+		Brand:        "Chevrolet",
 		Price:        "$25000",
 		Assistance:   true,
 		Insurance:    false,
@@ -138,7 +134,7 @@ var cars = []Car{
 		Fuel:         "Hybrid",
 		Reservation:  false,
 		Images: Images{
-			CarImage: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+			CarImage: "https://i.pinimg.com/originals/91/c0/26/91c026dd5f2233fc0d6b702603d143f7.jpg",
 		},
 	},
 }
